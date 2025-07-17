@@ -1,30 +1,76 @@
-/* style.css */
+/* base.css */
 
+body {
+    background: 
+        linear-gradient(to bottom right, rgba(250, 250, 250, 0.95), rgba(230, 235, 240, 0.95)),
+        url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
 header {
     position: relative;
-    height: 250px;
-    color: white;
+    height: 200px;
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: 
-        linear-gradient(
-            rgba(0, 0, 0, 0.5),
-            rgba(0, 0, 0, 0.7)
-        ),
-        url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1350&q=80') no-repeat center center;
-    background-size: cover;
-    z-index: 1;
+    text-align: center;
+    color: #fff;
 }
 
 header h1 {
+    font-size: 2.4rem;
+    padding: 1rem 2rem;
     background-color: rgba(0, 0, 0, 0.4);
-    padding: 20px 40px;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 2.5rem;
+    border-radius: 10px;
+    margin: 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
-nav.navbar {
-    margin-bottom: 1rem;
+/* Navbar */
+.navbar {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.navbar .nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ffc107 !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+
+/* Main Content */
+main.container {
+    background-color: #ffffffd8;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-top: 2rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* Footer */
+footer {
+    background-color: #1e1e1e;
+    color: #aaa;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    box-shadow: 0 -1px 8px rgba(0,0,0,0.05);
 }

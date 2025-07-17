@@ -1,10 +1,11 @@
+# configs/app.py
 from flask import Flask, render_template
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='../templates',static_folder='../static')
 
 @app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('front_pages/base.html')
 
 @app.route('/page1')
 def page1():
@@ -25,6 +26,3 @@ def form():
 @app.route('/admin/dashboard')
 def admin_dashboard():
     return render_template('admin/dashboard.html')
-
-if __name__ == '__main__':
-    app.run(debug=True)
