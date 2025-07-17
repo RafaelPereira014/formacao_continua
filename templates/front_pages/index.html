@@ -1,0 +1,26 @@
+<!-- index.html -->
+{% extends 'base.html' %}
+{% block title %}Início{% endblock %}
+{% block content %}
+<h1>Bem-vindo ao Sistema de Informações</h1>
+<p>Este site permite o preenchimento e avaliação de formulários.</p>
+{% endblock %}
+
+<!-- form.html -->
+{% extends 'base.html' %}
+{% block title %}Formulário{% endblock %}
+{% block content %}
+<h2>Preencha o Formulário</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ form.message.label(class="form-label") }}
+        {{ form.message(class="form-control") }}
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}
