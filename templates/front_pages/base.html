@@ -24,24 +24,61 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('page1') }}">Planos de Formação</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('page2') }}">Legislação</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('page3') }}">Pessoal Docente</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('page3') }}">Pessoal de Ação Educativa</a></li>
-          <li class="nav-item"><a class="nav-link" href="{{ url_for('form') }}">Contactos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('planos_formacao') }}">Planos de Formação</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('legislacao') }}">Legislação</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('pessoal_docente') }}">Pessoal Docente</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('pessoal_acc_educativa') }}">Pessoal de Ação Educativa</a></li>
+          <li class="nav-item"><a class="nav-link" href="{{ url_for('contactos') }}">Contactos</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ url_for('admin_dashboard') }}">Admin</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container">
-    {% block content %}{% endblock %}
-  </main>
+  <main class="container mt-4">
+    <div class="row">
+      <!-- Main Content -->
+      <div class="col-md-8">
+        {% block content %}{% endblock %}
+      </div>
 
-  <footer>
+      <!-- Sidebar -->
+      {% if not session.get('user_id') %}
+      <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+          <div class="card-body">
+            <h5 class="card-title">Aceder à sua conta</h5>
+            <p class="card-text">Inicie sessão ou crie uma conta para aceder a mais funcionalidades.</p>
+            <a href="{{ url_for('index') }}" class="btn btn-primary w-100 mb-2">🔐 Iniciar Sessão</a>
+            <a href="{{ url_for('index') }}" class="btn btn-outline-primary w-100">📝 Registar</a>
+            <small>Se ainda nao se encontra inscrito, <u>faça aqui o seu pré-registo</u></small>
+          </div>
+        </div>
+      </div>
+      {% endif %}
+    </div>
+</main>
+
+  <footer class="bg-dark text-light mt-5 py-4">
     <div class="container">
-      <p>&copy; {{ current_year or 2025 }} Secretaria Regional da Educação, Cultura e Desporto. Todos os direitos reservados.</p>
+      <div class="row">
+        <!-- Footer Links -->
+        <div class="col-md-8">
+          <ul class="list-inline mb-2">
+            <li class="list-inline-item"><a href="{{ url_for('planos_formacao') }}" class="text-light text-decoration-none">Planos de Formação</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('legislacao') }}" class="text-light text-decoration-none">Legislação</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('pessoal_docente') }}" class="text-light text-decoration-none">Pessoal Docente</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('pessoal_acc_educativa') }}" class="text-light text-decoration-none">Pessoal de Ação Educativa</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('contactos') }}" class="text-light text-decoration-none">Contactos</a></li>
+            <li class="list-inline-item"><a href="{{ url_for('admin_dashboard') }}" class="text-light text-decoration-none">Admin</a></li>
+          </ul>
+        </div>
+
+        <!-- Copyright -->
+        <div class="col-md-4 text-md-end">
+          <p class="mb-0">&copy; {{ current_year or 2025 }} Secretaria Regional da Educação, Cultura e Desporto</p>
+        </div>
+      </div>
     </div>
   </footer>
 

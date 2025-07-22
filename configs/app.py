@@ -5,19 +5,27 @@ app = Flask(__name__, template_folder='../templates',static_folder='../static')
 
 @app.route('/')
 def index():
-    return render_template('front_pages/base.html')
+    return render_template('front_pages/index.html')
 
-@app.route('/page1')
-def page1():
-    return render_template('page1.html')
+@app.route('/planos_formacao')
+def planos_formacao():
+    return render_template('front_pages/planos_formacao.html')
 
-@app.route('/page2')
-def page2():
-    return render_template('page2.html')
+@app.route('/legislacao')
+def legislacao():
+    return render_template('front_pages/legislacao.html')
 
-@app.route('/page3')
-def page3():
-    return render_template('page3.html')
+@app.route('/pessoal_docente')
+def pessoal_docente():
+    return render_template('front_pages/pessoal_docente.html')
+
+@app.route('/pessoal_acao_educativa')
+def pessoal_acc_educativa():
+    return render_template('front_pages/pessoal_acc_educativa.html')
+
+@app.route('/contactos')
+def contactos():
+    return render_template('front_pages/contactos.html')
 
 @app.route('/form')
 def form():
