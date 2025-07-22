@@ -126,3 +126,15 @@ footer p {
   position: relative;
   z-index: 2; /* Ensure it's above the overlay */
 }
+
+#scrollTopBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: none;
+  z-index: 999;
+  padding: 0.6rem 0.8rem;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  transition: opacity 0.3s ease;
+}
