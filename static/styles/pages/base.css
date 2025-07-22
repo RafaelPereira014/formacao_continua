@@ -100,3 +100,29 @@ footer p {
     color: #888;
     font-size: 0.85rem;
 }
+
+.section-card-sm {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  height: 100px;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  transition: transform 0.2s ease-in-out;
+}
+
+.section-card-sm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* Adjust opacity here */
+  z-index: 1;
+}
+.card-title.small {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  position: relative;
+  z-index: 2; /* Ensure it's above the overlay */
+}

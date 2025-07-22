@@ -1,9 +1,41 @@
-<!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Início{% endblock %}
+
 {% block content %}
-<h1>Bem-vindo à página da Formação Contínua do Sistema Educativo da Região Autónoma dos Açores</h1>
-<p>Este site permite o preenchimento e avaliação de formulários.</p>
+<div class="row g-4">
+  <!-- Section 1 -->
+  <div class="col-md-4">
+    <a href="{{ url_for('planos_formacao') }}" class="text-decoration-none text-white">
+      <div class="card bg-dark text-white border-0 shadow-sm section-card-sm" style="background-image: url('{{ url_for('static', filename='images/inquerito.png') }}');">
+        <div class="card-body d-flex align-items-end" style="height: 140px;">
+          <h6 class="card-title small">📘 Inquérito de Satisfação</h6>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="col-md-4">
+    <a href="{{ url_for('legislacao') }}" class="text-decoration-none text-white">
+      <div class="card bg-dark text-white border-0 shadow-sm section-card-sm" style="background-image: url('{{ url_for('static', filename='images/formadores.jpg') }}');">
+        <div class="card-body d-flex align-items-end" style="height: 140px;">
+          <h6 class="card-title small">👩‍🏫 Formadores Creditados</h6>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="col-md-4">
+    <a href="{{ url_for('pessoal_docente') }}" class="text-decoration-none text-white">
+      <div class="card bg-dark text-white border-0 shadow-sm section-card-sm" style="background-image: url('{{ url_for('static', filename='images/acoes.jpg') }}');">
+        <div class="card-body d-flex align-items-end" style="height: 140px;">
+          <h6 class="card-title small">📜 Ações Creditadas</h6>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<h1 class="mb-4">Bem-vindo à página da Formação Contínua do Sistema Educativo da Região Autónoma dos Açores</h1>
+
 {% endblock %}
-
-
