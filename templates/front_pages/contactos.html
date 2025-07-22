@@ -1,9 +1,50 @@
 <!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Início{% endblock %}
+
 {% block content %}
-<h1>Contactos</h1>
-<p>Este site permite o preenchimento e avaliação de formulários.</p>
+<h1 class="mb-4">Contactos</h1>
+
+<div class="row">
+  <!-- Contact Form -->
+  <div class="col-md-7">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title">📬 Envie-nos uma mensagem</h5>
+        <form method="POST" action="{{ url_for('contactos') }}">
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nome" name="nome" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="mensagem" class="form-label">Mensagem</label>
+            <textarea class="form-control" id="mensagem" name="mensagem" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Information -->
+  <div class="col-md-5">
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <h5 class="card-title">📞 Informações de contacto</h5>
+        <p><strong>Telefone:</strong> <a href="tel:+351296123456">+351 296 123 456</a></p>
+        <p><strong>Email:</strong> <a href="mailto:formacao@educacao.azores.gov.pt">formacao@educacao.azores.gov.pt</a></p>
+        <p><strong>Morada:</strong><br>
+           Direção Regional da Educação<br>
+           Rua do Contato, 9500-123 Ponta Delgada<br>
+           Açores, Portugal
+        </p>
+        <p><strong>Horário:</strong><br> Segunda a Sexta, 09h00–17h00</p>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
-
-
