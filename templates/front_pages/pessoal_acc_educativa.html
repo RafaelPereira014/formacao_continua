@@ -1,11 +1,71 @@
-<!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Pessoal de Ação Educativa{% endblock %}
 {% block content %}
+
 <h1>Pessoal de Ação Educativa</h1>
 
-<h4>Bem-vindo ao Sistema de Informações</h4>
-<p>Este site permite o preenchimento e avaliação de formulários.</p>
+<h4>
+  Formulários disponíveis
+  <button onclick="openModal()" title="Adicionar Formulário" style="border: none; background: none; cursor: pointer;">
+    📝
+  </button>
+</h4>
+
+<hr>
+
+<!-- Modal -->
+<div id="uploadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+     background: rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:white; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; position:relative;">
+    <h3>Adicionar Formulário</h3>
+    <form action="{{ url_for('upload_form') }}" method="POST" enctype="multipart/form-data">
+      
+      <!-- Hidden category value -->
+      <input type="hidden" name="category" value="educativa">
+
+      <div style="margin-top: 10px;">
+        <label for="form_type">Tipo de Formulário:</label><br>
+        <select id="form_type" name="form_type" style="width: 100%;" required>
+          <option value="" disabled selected>Escolha o tipo de formulário</option>
+          <option value="requerimento">Requerimento</option>
+          <option value="declaracao">Declaração</option>
+          <option value="avaliacao">Modelo de Avaliação</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label for="description">Descrição:</label><br>
+        <textarea id="description" name="description" rows="3" style="width: 100%;" required></textarea>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label for="document">Selecionar ficheiro:</label><br>
+        <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.txt" required>
+      </div>
+
+      <div style="margin-top: 10px; text-align: right;">
+        <button type="submit">📤 Enviar</button>
+        <button type="button" onclick="closeModal()" style="margin-left: 10px;">❌ Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById('uploadModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+  }
+
+  // Close modal on background click
+  window.onclick = function(e) {
+    const modal = document.getElementById('uploadModal');
+    if (e.target === modal) closeModal();
+  };
+</script>
+
 {% endblock %}
-
-

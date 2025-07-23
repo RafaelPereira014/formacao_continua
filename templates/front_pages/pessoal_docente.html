@@ -1,11 +1,93 @@
-<!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Pessoal Docente{% endblock %}
 {% block content %}
 <h1>Pessoal Docente</h1>
 
-<h4>Bem-vindo ao Sistema de Informações</h4>
-<p>Este site permite o preenchimento e avaliação de formulários.</p>
+<h4>
+  Formulários Disponíveis
+  <button onclick="openModal()" title="Adicionar Formulário" style="border: none; background: none; cursor: pointer;">
+    📝
+  </button>
+</h4>
+
+<hr>
+
+<h4>Disposições Gerais e Modelos de Avaliação</h4>
+<p>É importante continuar a promover a mudança de paradigma na formação contínua, direcionada para as necessidades específicas de cada comunidade educativa, na oferta e avaliação da formação contínua, destinada a pessoal docente, do sistema educativo regional. É fundamental a continuidade do incentivo às unidades orgânicas regionais para se constituírem como entidades formadoras creditadas, o que é simultaneamente um desafio para os formadores internos e o reconhecimento das mais-valias dos recursos humanos existentes, com todas as vantagens inerentes, como a calendarização e gestão das ações de formação contínua em período pós-laboral, maior objetividade e intencionalidade nas ações de formação contínua a acreditar e a promover bem como a satisfação do público-alvo, com a oferta formativa e organizada de acordo com as necessidades e especificidades, previamente diagnosticadas e sinalizadas.
+</p>
+<p><strong>Disposições Gerais/Recomendações – Pessoal Docente</strong></p>
+<p>Aos professores cabe a responsabilidade de refletir sobre a sua prática pedagógica, quer através da investigação, quer através do empenho sistemático num desenvolvimento profissional contínuo, do próprio, ao longo de toda a carreira profissional.</p>
+<p><em>“No contexto de uma aprendizagem ao longo da vida o desenvolvimento profissional implica que os docentes:</em></p>
+<ul>
+    <li><em>continuem a refletir sobre a sua prática pedagógica de forma sistemática;</em></li>
+    <li><em>efetuem estudos ou investigação com base na prática pedagógica;</em></li>
+    <li><em>integrem na sua pratica pedagógica os resultados dos estudos realizados, tanto de caráter académico como baseados na sua prática;</em></li>
+    <li><em>avaliem a eficácia das suas estratégias pedagógicas e as modifiquem em conformidade; - realizem uma avaliação das suas próprias necessidades de formação”*</em></li>
+    <small>*Comunicação da Comissão Europeia ao Conselho e ao Parlamento Europeu, Melhorar a Qualidade da Formação académica e profissional dos Docentes, de 23 de Agosto 2007</small>
+</ul>
+<p><strong>Recomendações de Avaliação</strong></p>
+<p>As ações de formação contínua devem assegurar a avaliação individual do aproveitamento do formando. (artigo 228º do ECDRAA)</p>
+<p>Sem prejuízo da utilização de outras formas de avaliação complementares, sugere-se a aplicação nas ações de formação, em regime presencial, das seguintes modalidades de avaliação:</p>
+<ul>
+    <li><p>Avaliação diagnóstica ou inicial – Questionário de avaliação de diagnóstico ocorre no início da atividade formativa, não tem qualquer intenção classificativa, e o seu objetivo é o de identificar o posicionamento dos formandos, em relação ao tema da ação, quanto a expectativas, interesses e nível de conhecimentos;</p></li>
+    <li><p>Avaliação formativa ou contínua – é feita durante o desenvolvimento da ação e tem como objetivo a obtenção dum “feedback” contínuo e permanente, de forma a possibilitar um diagnóstico fiel do processo evolutivo dos formandos, a identificação das dificuldades de aprendizagem eventualmente surgidas, bem como introduzir medidas corretivas adequadas.</p></li>
+    <li><p>Avaliação final – é feita no final da ação e visa avaliar o resultado final da aprendizagem, em função do perfil de saída esperado. Esta avaliação é realizada preferencialmente, sob a forma escrita, sem prejuízo de utilização, cumulativa ou em alternativa, de outros instrumentos, designadamente relatórios, trabalhos, provas, comentários e apreciações críticas e resultará da média dos resultados obtidos nos dois instrumentos de avaliação a saber:</p></li>
+    <ul>
+        <li><p>Avaliação da participação: observação e registo, visa avaliar individualmente o percurso de aprendizagem de cada formando ao longo da ação de formação.</p></li>
+        <li><p>Avaliação de trabalho autónomo: avaliação escrita final, pretende avaliar em que medida os temas tratados foram aprendidos pelo formando.</p></li>
+    </ul>
+</ul>
+
+<!-- Modal -->
+<div id="uploadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+     background: rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:white; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; position:relative;">
+    <h3>Adicionar Formulário</h3>
+    <form action="{{ url_for('upload_form') }}" method="POST" enctype="multipart/form-data">
+      
+      <div style="margin-top: 10px;">
+        <label for="form_type">Tipo de Formulário:</label><br>
+        <select id="form_type" name="form_type" style="width: 100%;" required>
+          <option value="" disabled selected>Escolha o tipo de formulário</option>
+          <option value="avaliacao">Modelo de Avaliação</option>
+          <option value="requerimento">Requerimento</option>
+          <option value="declaracao">Declaração</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label for="description">Descrição:</label><br>
+        <textarea id="description" name="description" rows="3" style="width: 100%;" required></textarea>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label for="document">Selecionar ficheiro:</label><br>
+        <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.txt" required>
+      </div>
+
+      <div style="margin-top: 10px; text-align: right;">
+        <button type="submit">📤 Enviar</button>
+        <button type="button" onclick="closeModal()" style="margin-left: 10px;">❌ Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal() {
+    document.getElementById('uploadModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+  }
+
+  // Close modal on background click
+  window.onclick = function(e) {
+    const modal = document.getElementById('uploadModal');
+    if (e.target === modal) closeModal();
+  };
+</script>
+
 {% endblock %}
-
-

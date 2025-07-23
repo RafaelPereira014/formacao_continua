@@ -1,9 +1,65 @@
-<!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Planos de Formação{% endblock %}
+
 {% block content %}
-<h1>Planos de Formação</h1>
+<h1 style="margin-bottom: 30px; font-size: 2rem; color: #2c3e50;">📘 Planos de Formação</h1>
 
+<div style="display: flex; flex-wrap: wrap; gap: 40px;">
+
+  <!-- Textual Info Section -->
+  <div style="flex: 2; min-width: 300px;">
+    <section style="margin-bottom: 30px;">
+      <h2 style="font-size: 1.5rem; color: #34495e;">Sindicato dos Professores da Região Açores</h2>
+      <p style="margin-top: 15px;">
+        📄 <strong>Plano de Formação:</strong><br>
+        <a href="/static/docs/plano-formacao.pdf" download style="display: inline-block; margin-top: 5px; color: #007BFF; font-weight: 500;">
+          📥 Transferir plano (PDF)
+        </a>
+      </p>
+        <div style="display: flex; gap: 40px; flex-wrap: wrap; margin-top: 20px;">
+            <div style="flex: 1; min-width: 280px;">
+                <h3 style="margin-bottom: 8px; font-size: 1.2rem; color: #2c3e50;">📍 Terceira</h3>
+                <address style="line-height: 1.6; font-style: normal;">
+                Canada Nova nº 21<br>
+                Santa Luzia<br>
+                9700 – 130 Angra do Heroísmo<br>
+                <strong>Telefone:</strong> <a href="tel:+351295215471">295 215 471</a><br>
+                <strong>Email:</strong> <a href="mailto:spraterceira@spra.pt">spraterceira@spra.pt</a><br>
+                <strong>Website:</strong> <a href="https://www.spra.pt" target="_blank">www.spra.pt</a>
+                </address>
+            </div>
+
+            <div style="flex: 1; min-width: 280px;">
+                <h3 style="margin-bottom: 8px; font-size: 1.2rem; color: #2c3e50;">📍 São Miguel</h3>
+                <address style="line-height: 1.6; font-style: normal;">
+                Av. D. João III, Bloco A, nº 10 – 3º<br>
+                9500 – 310 Ponta Delgada<br>
+                <strong>Telefone:</strong> <a href="tel:+351296205960">296 205 960</a><br>
+                <strong>Email:</strong> <a href="mailto:smiguel@spra.pt">smiguel@spra.pt</a><br>
+                <strong>Website:</strong> <a href="https://www.spra.pt" target="_blank">www.spra.pt</a>
+                </address>
+            </div>
+        </div>
+
+      
+    </section>
+
+    <section style="margin-top: 30px;">
+      <p>
+        🔎 Consulte mais planos de formação em:<br>
+        <a href="https://formacao.edu.azores.gov.pt/index.php" target="_blank" style="color: #007BFF; font-weight: 500;">
+          formacao.edu.azores.gov.pt
+        </a>
+      </p>
+
+      
+    </section>
+  </div>
+
+  <!-- Image Section -->
+  <div style="flex: 1; min-width: 280px;">
+    <img src="static/images/spra.jpg" alt="Centro SPRA" style="width: 100%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  </div>
+
+</div>
 {% endblock %}
-
-

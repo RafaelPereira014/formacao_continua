@@ -1,11 +1,67 @@
-<!-- index.html -->
 {% extends 'front_pages/base.html' %}
 {% block title %}Legislação{% endblock %}
 {% block content %}
+
 <h1>Legislação</h1>
 
-<h4>Pessoal Docente</h4>
+<h4>
+  Pessoal Docente
+  <button onclick="openModal('docente')" title="Adicionar Documento" style="border: none; background: none; cursor: pointer;">
+    📝
+  </button>
+</h4>
 <p>Este site permite o preenchimento e avaliação de formulários.</p>
+
+<hr>
+
+<h4>
+  Pessoal de Ação Educativa
+  <button onclick="openModal('educativa')" title="Adicionar Documento" style="border: none; background: none; cursor: pointer;">
+    📝
+  </button>
+</h4>
+
+<!-- Modal -->
+<div id="uploadModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+     background: rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+  <div style="background:white; padding: 20px; border-radius: 8px; width: 90%; max-width: 500px; position:relative;">
+    <h3>Adicionar Documento</h3>
+    <form action="{{ url_for('upload_legislation') }}" method="POST" enctype="multipart/form-data">
+      <input type="hidden" name="category" id="modalCategory">
+
+      <div style="margin-top: 10px;">
+        <label for="description">Descrição:</label><br>
+        <textarea id="description" name="description" rows="3" style="width: 100%;" required></textarea>
+      </div>
+
+      <div style="margin-top: 10px;">
+        <label for="document">Selecionar ficheiro:</label><br>
+        <input type="file" id="document" name="document" accept=".pdf,.doc,.docx,.txt" required>
+      </div>
+
+      <div style="margin-top: 10px; text-align: right;">
+        <button type="submit">📤 Enviar</button>
+        <button type="button" onclick="closeModal()" style="margin-left: 10px;">❌ Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal(category) {
+    document.getElementById('uploadModal').style.display = 'flex';
+    document.getElementById('modalCategory').value = category;
+  }
+
+  function closeModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+  }
+
+  // Close modal on background click
+  window.onclick = function(e) {
+    const modal = document.getElementById('uploadModal');
+    if (e.target === modal) closeModal();
+  };
+</script>
+
 {% endblock %}
-
-

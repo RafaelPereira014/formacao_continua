@@ -15,9 +15,20 @@ def planos_formacao():
 def legislacao():
     return render_template('front_pages/legislacao.html')
 
+@app.route('/upload_legislation', methods=['POST'])
+def upload_legislation():
+    # handle file and description upload
+    return 
+
 @app.route('/pessoal_docente')
 def pessoal_docente():
     return render_template('front_pages/pessoal_docente.html')
+
+@app.route('/upload_form', methods=['POST'])
+def upload_form():
+    
+    # Handle saving logic
+    return   # or another route
 
 @app.route('/pessoal_acao_educativa')
 def pessoal_acc_educativa():
